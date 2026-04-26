@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import React from "react";
 // import { NavLink } from 'react-router-dom'
 import styled from "styled-components";
@@ -25,7 +25,7 @@ const Line = styled(motion.span)`
   width: 2px;
   height: 8rem;
   background-color: ${(props) =>
-    props.color === "dark" ? DarkTheme.text : DarkTheme.body};
+    props.$color === "dark" ? DarkTheme.text : DarkTheme.body};
 `;
 
 const SocialIcons = (props) => {
@@ -101,7 +101,7 @@ const SocialIcons = (props) => {
       </motion.div>
 
       <Line
-        color={props.theme}
+        $color={props.theme}
         initial={{
           height: 0,
         }}

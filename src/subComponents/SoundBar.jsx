@@ -44,7 +44,7 @@ background: ${props => props.theme.text};
 border: 1px solid ${props => props.theme.body};
 
 animation:${play} 1s ease infinite;
-animation-play-state: ${props => props.click ? "running" : "paused"};
+animation-play-state: ${props => props.$click ? "running" : "paused"};
 height: 1rem;
 width: 2px;
 margin:0 0.1rem
@@ -66,11 +66,11 @@ const SoundBar = () => {
     }
     return (
         <Box onClick={() => handleClick()}>
-            <Line click={click}/>
-            <Line click={click}/>
-            <Line click={click}/>
-            <Line click={click}/>
-            <Line click={click}/>
+            <Line $click={click}/>
+            <Line $click={click}/>
+            <Line $click={click}/>
+            <Line $click={click}/>
+            <Line $click={click}/>
 
 
             <audio src={music} ref={ref}  loop />
