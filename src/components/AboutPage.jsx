@@ -72,12 +72,10 @@ const AboutPage = () => {
             <img src={astronaut} alt="spaceman" />
         </Spaceman>    
         <Main>
-        I'm a front-end developer located in India. I love to create simple yet beautiful websites with great user experience.
-<br /> <br/>
-I'm interested in the whole frontend stack Like trying new things and building great projects. I'm an independent freelancer and blogger. I love to write blogs and read books.
-<br/> <br/>
-I believe everything is an Art when you put your consciousness in it. You can connect with me via social links.
-        </Main>
+I'm a Computer Science student passionate about the connection between technology and medical science. I enjoy learning, building projects, and exploring new ideas.
+<br /> <br /> 
+I enjoy video games, especially Call of Duty: Mobile, chess, and learning the Quran. I'm always working on developing myself through new skills and experiences.<br/> <br /> 
+I believe learning is a lifelong journey. My goal is to pursue a master's degree, followed by a PhD, and eventually share my knowledge through teaching.        </Main>
 
         <BigTitle text="ABOUT" top="10%" left="5%" />
 

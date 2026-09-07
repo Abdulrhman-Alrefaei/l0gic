@@ -13,30 +13,40 @@ Fonts
 
 Skills
 ----------------------------------------------
-I love to create design which speaks, Keep it clean, minimal and simple.
-I LIKE TO DESIGN
-Web Design
-Mobile Apps
-TOOLS
-Figma
+## Technology Explorer
 
-I value business or brand for which i'm creating, thus i enjoy bringing new ideas to life.
-SKILLS
-Html, Css, Js, React, Redux, Sass, Bootstrap, Tailwind, Firebase etc.
+I enjoy exploring technology, learning new skills, and turning ideas into useful and meaningful projects. I prefer solutions that are simple, practical, and well-organized, while always looking for ways to improve.
 
-TOOLS
-VScode, Github, Codepen etc.
+**I like to Explore**
+
+* Technology & Medical Science
+* Cybersecurity
+* Data & Analytics
+* Web & Software Projects
+* Continuous Learning
+
+**Skills**
+
+Python, SQL, Data Analysis, Power BI, Microsoft Excel, Cybersecurity Fundamentals, Web Development
+
+**Tools**
+
+Visual Studio Code, GitHub, Microsoft Power BI, Microsoft Excel
+
+## Teaching
+
+I believe that learning becomes more valuable when it is shared. As I continue developing my knowledge and skills, I hope to teach others, share what I learn, and eventually build a career that combines continuous learning with teaching and academic growth.
 
 ----------------------------------------------
 
 About Text
 
 ----------------------------------------------
-I'm a front-end developer located in India. I love to create simple yet beautiful websites with great user experience.
+I'm a Computer Science student passionate about exploring the connection between technology and medical science. I enjoy building, learning, and discovering new ways to use technology to solve meaningful problems.
 
-I'm interested in the whole frontend stack Like trying new things and building great projects. I'm an independent freelancer and blogger. I love to write blogs and read books.
+I enjoy video games, especially Call of Duty: Mobile, as well as chess and learning the Quran. I'm also passionate about continuously developing myself through new skills, projects, and experiences.
 
-I believe everything is an Art when you put your consciousness in it. You can connect with me via social links.
+I believe learning is a lifelong journey, and every skill, challenge, and experience is a step toward becoming a better version of yourself. My goal is to continue learning, pursue my master's degree, followed by a PhD and eventually share my knowledge through teaching.
 ----------------------------------------------
 
 

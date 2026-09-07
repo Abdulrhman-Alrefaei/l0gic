@@ -93,27 +93,32 @@ const MySkillsPage = () => {
 <ParticleComponent theme='light' />
             <Main>
 <Title>
-    <Design width={40} height={40} /> Designer
+    <Design width={40} height={40} /> Teaching
 </Title>
 <Description>
-I love to create design which speaks, Keep it clean, minimal and simple.
-</Description>
+I enjoy sharing what I learn and helping others grow through knowledge and experience.</Description>
 <Description>
-<strong>I like to Design</strong>
+<strong>I like to Teach</strong>
 <ul>
     <li>
-        Web Design
+        Computer Science Concepts
     </li>
     <li>
-        Mobile Apps
+        Algorithms
+    </li>
+    <li>
+        Math in general
     </li>
 </ul>
 </Description>
 <Description>
-<strong>Tools</strong>
+<strong>Focus</strong>
 <ul>
     <li>
-       Figma
+       Simplifying Complex Ideas
+    </li>
+    <li>
+        Sharing Knowledge  
     </li>
     
 </ul>
@@ -122,21 +127,32 @@ I love to create design which speaks, Keep it clean, minimal and simple.
             </Main>
             <Main>
 <Title>
-    <Develope width={40} height={40} /> Frontend Developer
+    <Develope width={40} height={40} /> Technology
 </Title>
 <Description>
-I value business or brand for which i'm creating, thus i enjoy bringing new ideas to life.
+I enjoy exploring technology, learning new skills, and turning ideas into useful projects.
+</Description>
+<Description>
+<strong>I like to Explore</strong>
+<ul>
+    <li>
+Technology & Medical Science
+    </li>
+    <li>
+Cybersecurity
+    </li>
+        <li>
+Data & Analytics
+    </li>
+    <li>
+Web Projects    </li>
+
+</ul>
 </Description>
 <Description>
 <strong>Skills</strong>
 <p>
-Html, Css, Js, React, Redux, Sass, Bootstrap, Tailwind, Firebase etc.
-</p>
-</Description>
-<Description>
-<strong>Tools</strong>
-<p>
-VScode, Github, Codepen etc.
+Python, SQL, Data Analysis, Power BI, Excel, Cybersecurity
 </p>
 </Description>
 

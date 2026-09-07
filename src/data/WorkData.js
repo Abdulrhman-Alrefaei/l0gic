@@ -3,33 +3,33 @@
 export const Work = [
     {
         id:1,
-        name:"Agency Landing Page",
-        description:"It is build on top of the React JS, with styledComponents and GSAP for smooth scrolling animations.",
-        tags:["react","gsap","styledComponents"],
+        name:"Calculus Explained",
+        description:"A YouTube educational project where I explain calculus concepts in a simple and practical way.",
+        tags:["Teaching","Calculus"],
         
-        demo:"https://agency-website-eta.vercel.app/",
+        demo:"https://www.youtube.com/@abdulrhmanalrefaei",
         github:"https://github.com/codebucks27/Agency-website"
     },
     {
         id:2,
-        name:"Job listing website",
-        description:"A Job listing website build in ReactJS. With searching and filtering functionalities.",
-        tags:["react","sass"],
+        name:"Attendance Automation",
+        description:"A browser automation project built to streamline webinar attendance using Python and Playwright.",
+        tags:["python","playwright"],
         
-        demo:"http://react-job-listing-website.codebucks27.vercel.app/",
-        github:"https://github.com/codebucks27/react-job-listing-website"
+        demo:"https://github.com/",
+        github:"https://github.com/"
         
     },
     {
         id:3,
-        name:"Dev.to Clone",
-        description:"A clone of Dev.to build using ReactJS. With realtime fetching of articles from dev.to using API.",
-        tags:["react","api","sass"],
+        name:"Home Shield",
+        description:"A smart network security system designed to protect home and enterprise networks through monitoring, filtering, and threat detection.",
+        tags:["Network","Security","RaspberryPi"],
         
-        demo:"http://devto-clone-codebucks27.vercel.app/",
-        github:"https://github.com/codebucks27/devto-clone"
+        demo:"https://startbootstrap.com/previews/coming-soon",
+        github:"https://github.com"
     },
-    {
+   /*{
         id:4,
         name:"Sidebar Menu",
         description:"A cool looking sidebar menu build using ReactJS and styledComponents.It has really smooth animations.",
@@ -57,7 +57,6 @@ export const Work = [
         demo:"http://react-responsive-navbar-codebucks27.vercel.app/",
         github:"https://github.com/codebucks27/React-responsive-navbar"
         
-    },
-    
+    },*/
   
 ] 
