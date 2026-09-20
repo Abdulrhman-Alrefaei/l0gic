@@ -39,6 +39,12 @@ const Gallery = () => {
   const photos = [
     "/src/assets/Images/photo1.jpg", 
     "/src/assets/Images/photo2.jpg",
+    "/src/assets/Images/photo3.jpg",
+     "/src/assets/Images/photo1.jpg", 
+    "/src/assets/Images/photo2.jpg",
+    "/src/assets/Images/photo3.jpg",
+   "/src/assets/Images/photo1.jpg", 
+    "/src/assets/Images/photo2.jpg",
     "/src/assets/Images/photo3.jpg"
   ];
 
