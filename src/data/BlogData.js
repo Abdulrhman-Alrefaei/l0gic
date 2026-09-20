@@ -3,12 +3,12 @@
 export const Blogs = [
     {
         id:1,
-        name:"Learning Networking",
-name: "Learning Networking",
-description: "Starting a new learning journey in networking by exploring and explaining concepts like Distance Vector Routing.",        tags:["networking","algorithms","teaching"],
-        date:"3 Sep, 2026",
+        name:"My Photography Gallery",
+name: "My Photography Gallery",
+description: "My Photography Gallery",        tags:["Photos", "Life", "Art"],
+        date:"12 May, 2026",
         //imgSrc:"https://res.cloudinary.com/practicaldev/image/fetch/s--sBeV06Xc--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2yrzy75q4dzibqz6rf82.png",
-        link:"https://www.youtube.com/watch?v=WtyEPFmpN5A&t=28s"
+        link:"/gallery"
     },
     {
         id:2,
@@ -19,15 +19,16 @@ description: "Starting a new learning journey in networking by exploring and exp
         //imgSrc:"https://codebucks.hashnode.dev/_next/image?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1625479747640%2F7KzwP9nmj.png%3Fw%3D1600%26h%3D840%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp&w=1920&q=75",
         link:"https://www.linkedin.com/posts/abdulrhman-al-refaei-00931a389_learningjourney-education-inspiration-activity-7381640174268596224-hBDe?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF-fCIkBw1ziyCYi7FwdBN2cfBgQzvP5MU4"
     },
-   /* {
-        id:3,
-        name:"React Loading Screen: Try these 3 cool loading screens for your app",
-        tags:["react","react-lottie","styled-components"],
-        date:"6 July, 2021",
-        imgSrc:"https://codebucks.hashnode.dev/_next/image?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1625552344293%2Fegwis0UIX.png%3Fw%3D1600%26h%3D840%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp&w=1920&q=75",
-        link:"https://codebucks.hashnode.dev/react-loading-screens"
+   {
+        id:1,
+        name:"Learning Networking",
+name: "Learning Networking",
+description: "Starting a new learning journey in networking by exploring and explaining concepts like Distance Vector Routing.",        tags:["networking","algorithms","teaching"],
+        date:"3 Sep, 2026",
+        //imgSrc:"https://res.cloudinary.com/practicaldev/image/fetch/s--sBeV06Xc--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2yrzy75q4dzibqz6rf82.png",
+        link:"https://www.youtube.com/watch?v=WtyEPFmpN5A&t=28s"
     },
-    {
+   /*  {
         id:4,
         name:"How to build a Fabulous Todo App using React, Redux and Framer-Motion",
         tags:["react","redux","framer-motion"],
