@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Import all images from src/assets/Images/
-import photo1 from '../assets/Images/photo1.jpg';
-import photo2 from '../assets/Images/photo2.jpg';
-import photo3 from '../assets/Images/photo3.jpg';
-import photo4 from '../assets/Images/photo4.jpg';
-import photo5 from '../assets/Images/photo5.jpg';
-import photo6 from '../assets/Images/photo6.jpg';
-import photo7 from '../assets/Images/photo7.jpg';
-import photo8 from '../assets/Images/photo8.jpg';
-import photo9 from '../assets/Images/photo9.jpg';
+import photo1 from '../assets/Images/photo1.jpeg';
+import photo2 from '../assets/Images/photo2.jpeg';
+import photo3 from '../assets/Images/photo3.jpeg';
+import photo4 from '../assets/Images/photo4.jpeg';
+import photo5 from '../assets/Images/photo5.jpeg';
+import photo6 from '../assets/Images/photo6.jpeg';
+import photo7 from '../assets/Images/photo7.jpeg';
+import photo8 from '../assets/Images/photo8.jpeg';
+import photo9 from '../assets/Images/photo9.jpeg';
 
 const MainContainer = styled.div`
   min-height: 100vh;
