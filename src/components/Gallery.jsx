@@ -1,6 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Import all images from src/assets/Images/
+import photo1 from '../assets/Images/photo1.jpg';
+import photo2 from '../assets/Images/photo2.jpg';
+import photo3 from '../assets/Images/photo3.jpg';
+import photo4 from '../assets/Images/photo4.jpg';
+import photo5 from '../assets/Images/photo5.jpg';
+import photo6 from '../assets/Images/photo6.jpg';
+import photo7 from '../assets/Images/photo7.jpg';
+import photo8 from '../assets/Images/photo8.jpg';
+import photo9 from '../assets/Images/photo9.jpg';
+
 const MainContainer = styled.div`
   min-height: 100vh;
   width: 100vw;
@@ -35,17 +46,16 @@ const Img = styled.img`
 `;
 
 const Gallery = () => {
-  // Add your image paths here. Make sure the images are inside your public/ folder or imported at the top.
   const photos = [
-    "/src/assets/Images/photo1.jpg", 
-    "/src/assets/Images/photo2.jpg",
-    "/src/assets/Images/photo3.jpg",
-     "/src/assets/Images/photo4.jpg", 
-    "/src/assets/Images/photo5.jpg",
-    "/src/assets/Images/photo6.jpg",
-   "/src/assets/Images/photo7.jpg", 
-    "/src/assets/Images/photo8.jpg",
-    "/src/assets/Images/photo9.jpg"
+    photo1,
+    photo2,
+    photo3,
+    photo4,
+    photo5,
+    photo6,
+    photo7,
+    photo8,
+    photo9
   ];
 
   return (
