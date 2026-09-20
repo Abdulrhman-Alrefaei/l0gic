@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 // Photo Imports (.jpeg)
@@ -47,14 +47,42 @@ const HeaderSubtitle = styled.p`
   text-align: center;
   opacity: 0.7;
   font-size: 1.1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
+`;
+
+/* Filter Tab Buttons */
+const TabContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+`;
+
+const TabButton = styled.button`
+  background: ${props => (props.$active ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.05)')};
+  color: #fff;
+  border: 1px solid ${props => (props.$active ? '#fff' : 'rgba(255, 255, 255, 0.15)')};
+  padding: 0.6rem 1.8rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
 `;
 
 const SectionHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin: 3rem 0 1.5rem 0;
+  margin: 1.5rem 0 1.5rem 0;
 
   h2 {
     font-size: 1.8rem;
@@ -77,7 +105,7 @@ const Divider = styled.hr`
   margin: 4rem 0;
 `;
 
-/* Photography Grid (Standard 4:3 Aspect Ratio) */
+/* Photography Grid */
 const PhotoGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -103,7 +131,7 @@ const PhotoCard = styled.div`
   }
 `;
 
-/* Movie Poster Grid (Classic 2:3 Vertical Aspect Ratio) */
+/* Movie Poster Grid */
 const MovieGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -161,6 +189,9 @@ const MovieOverlay = styled.div`
 // --- Component ---
 
 const Gallery = () => {
+  // Active Tab State: 'all', 'photos', or 'movies'
+  const [activeTab, setActiveTab] = useState('all');
+
   const photos = [
     photo1, photo2, photo3, photo4,
     photo5, photo6, photo7, photo8
@@ -177,36 +208,67 @@ const Gallery = () => {
         <HeaderTitle>Gallery & Cinema</HeaderTitle>
         <HeaderSubtitle>A collection of my photography and favorite movies</HeaderSubtitle>
 
-        {/* Photography Section */}
-        <SectionHeader>
-          <h2>Photography</h2>
-          <span>{photos.length} Photos</span>
-        </SectionHeader>
-        <PhotoGrid>
-          {photos.map((photo, index) => (
-            <PhotoCard key={`photo-${index}`}>
-              <Img src={photo} alt={`Photo ${index + 1}`} loading="lazy" />
-            </PhotoCard>
-          ))}
-        </PhotoGrid>
+        {/* Navigation Tabs */}
+        <TabContainer>
+          <TabButton
+            $active={activeTab === 'all'}
+            onClick={() => setActiveTab('all')}
+          >
+            All ({photos.length + movies.length})
+          </TabButton>
+          <TabButton
+            $active={activeTab === 'photos'}
+            onClick={() => setActiveTab('photos')}
+          >
+            Photos ({photos.length})
+          </TabButton>
+          <TabButton
+            $active={activeTab === 'movies'}
+            onClick={() => setActiveTab('movies')}
+          >
+            Movies ({movies.length})
+          </TabButton>
+        </TabContainer>
 
-        <Divider />
+        {/* Photography Section */}
+        {(activeTab === 'all' || activeTab === 'photos') && (
+          <div>
+            <SectionHeader>
+              <h2>Photography</h2>
+              <span>{photos.length} Photos</span>
+            </SectionHeader>
+            <PhotoGrid>
+              {photos.map((photo, index) => (
+                <PhotoCard key={`photo-${index}`}>
+                  <Img src={photo} alt={`Photo ${index + 1}`} loading="lazy" />
+                </PhotoCard>
+              ))}
+            </PhotoGrid>
+          </div>
+        )}
+
+        {/* Divider (Only visible when showing 'All') */}
+        {activeTab === 'all' && <Divider />}
 
         {/* Movie Shelf Section */}
-        <SectionHeader>
-          <h2>Movie Favorites</h2>
-          <span>{movies.length} Titles</span>
-        </SectionHeader>
-        <MovieGrid>
-          {movies.map((movie, index) => (
-            <MovieCard key={`movie-${index}`}>
-              <Img src={movie} alt={`Movie poster ${index + 1}`} loading="lazy" />
-              <MovieOverlay>
-                <span>Movie #{index + 1}</span>
-              </MovieOverlay>
-            </MovieCard>
-          ))}
-        </MovieGrid>
+        {(activeTab === 'all' || activeTab === 'movies') && (
+          <div>
+            <SectionHeader>
+              <h2>Movie Favorites</h2>
+              <span>{movies.length} Titles</span>
+            </SectionHeader>
+            <MovieGrid>
+              {movies.map((movie, index) => (
+                <MovieCard key={`movie-${index}`}>
+                  <Img src={movie} alt={`Movie poster ${index + 1}`} loading="lazy" />
+                  <MovieOverlay>
+                    <span>Movie #{index + 1}</span>
+                  </MovieOverlay>
+                </MovieCard>
+              ))}
+            </MovieGrid>
+          </div>
+        )}
       </ContentWrapper>
     </MainContainer>
   );
