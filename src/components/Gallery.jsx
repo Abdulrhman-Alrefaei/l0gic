@@ -40,12 +40,12 @@ const Gallery = () => {
     "/src/assets/Images/photo1.jpg", 
     "/src/assets/Images/photo2.jpg",
     "/src/assets/Images/photo3.jpg",
-     "/src/assets/Images/photo1.jpg", 
-    "/src/assets/Images/photo2.jpg",
-    "/src/assets/Images/photo3.jpg",
-   "/src/assets/Images/photo1.jpg", 
-    "/src/assets/Images/photo2.jpg",
-    "/src/assets/Images/photo3.jpg"
+     "/src/assets/Images/photo4.jpg", 
+    "/src/assets/Images/photo5.jpg",
+    "/src/assets/Images/photo6.jpg",
+   "/src/assets/Images/photo7.jpg", 
+    "/src/assets/Images/photo8.jpg",
+    "/src/assets/Images/photo9.jpg"
   ];
 
   return (
