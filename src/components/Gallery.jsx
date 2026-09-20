@@ -37,9 +37,9 @@ const Img = styled.img`
 const Gallery = () => {
   // Add your image paths here. Make sure the images are inside your public/ folder or imported at the top.
   const photos = [
-    "/images/photo1.jpg", 
-    "/images/photo2.jpg",
-    "/images/photo3.jpg"
+    "/src/assets/Images/photo1.jpg", 
+    "/src/assets/Images/photo2.jpg",
+    "/src/assets/Images/photo3.jpg"
   ];
 
   return (
