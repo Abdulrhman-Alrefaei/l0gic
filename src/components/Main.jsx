@@ -77,25 +77,23 @@ text-decoration: none;
 z-index:1;
 `
 
-// --- NEW LIKE BUTTON STYLES ---
+// --- LIKE BUTTON STYLES ---
 const LIKE = styled.button`
 background: none;
 border: none;
-/* Turns red if liked, otherwise adapts to the dark/light background based on $click */
-color: ${props => props.$hasLikes ? '#ff4b4b' : (props.$click ? props.theme.body : props.theme.text)};
+color: ${props => props.$hasLiked ? '#ff4b4b' : (props.$click ? props.theme.body : props.theme.text)};
 cursor: pointer;
 z-index:1;
 outline: none;
+transition: transform 0.2s ease;
+&:hover {
+  transform: scale(1.1);
+}
 `
-// ------------------------------
 
 const rotate = keyframes`
-from{
-    transform: rotate(0);
-}
-to{
-    transform: rotate(360deg);
-}
+from{ transform: rotate(0); }
+to{ transform: rotate(360deg); }
 `
 
 const Center = styled.button`
@@ -137,34 +135,62 @@ transition: height 0.5s ease, width 1s ease 0.5s;
 
 
 const Main = () => {
-
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
 
-    // --- NEW LIKES STATE (Reads from LocalStorage) ---
-    const [likes, setLikes] = useState(() => {
-        const savedLikes = localStorage.getItem('my_portfolio_likes');
-        return savedLikes !== null ? parseInt(savedLikes, 10) : 0;
-    });
+    // --- GLOBAL LIKES LOGIC ---
+    const [likes, setLikes] = useState(0); // The global number
+    const [hasLiked, setHasLiked] = useState(false); // Did THIS user click it?
 
-    // Handle Like Button Press
+    // 1. When the page loads, fetch the global number from the internet
+    useEffect(() => {
+        // Check if this specific device has liked it before
+        const localLikeStatus = localStorage.getItem('abdulrhman_has_liked');
+        if (localLikeStatus === 'true') setHasLiked(true);
+
+        // Fetch the global count
+        fetch('https://api.counterapi.dev/v1/abdulrhman-portfolio/likes')
+            .then(res => res.json())
+            .then(data => setLikes(data.count || 0))
+            .catch(err => console.log('Error fetching likes:', err));
+    }, []);
+
+    // 2. When the user clicks the button
     const handleLikePress = () => {
-        const newLikes = likes + 1;
-        setLikes(newLikes);
-        localStorage.setItem('my_portfolio_likes', newLikes); // Saves it so it survives refreshes
+        if (!hasLiked) {
+            // Instantly update UI for the user so it feels fast
+            setLikes(likes + 1);
+            setHasLiked(true);
+            localStorage.setItem('abdulrhman_has_liked', 'true');
+            
+            // Tell the global internet database to go UP
+            fetch('https://api.counterapi.dev/v1/abdulrhman-portfolio/likes/up')
+                .then(res => res.json())
+                .then(data => setLikes(data.count)); // sync exact global number
+        } else {
+            // They un-liked it
+            setLikes(likes - 1);
+            setHasLiked(false);
+            localStorage.setItem('abdulrhman_has_liked', 'false');
+
+            // Tell the global internet database to go DOWN
+            fetch('https://api.counterapi.dev/v1/abdulrhman-portfolio/likes/down')
+                .then(res => res.json())
+                .then(data => setLikes(data.count)); // sync exact global number
+        }
     };
-    // --------------------------------------------------
+    // --------------------------
 
     return (
         <MainContainer>
-         <DarkDiv   $click={click}/>
+         <DarkDiv $click={click}/>
             <Container>
             <PowerButton />
             <LogoComponent theme={click ? 'dark' :'light'}/>
             <SocialIcons theme={click ? 'dark' :'light'} />
 
             <Center $click={click}>
-                <YinYang  onClick={()=> handleClick()} width={click ? 120 : 200} height={click ? 120 : 200} fill='currentColor' />
+                <YinYang onClick={()=> handleClick()} width={click ? 120 : 200} height={click ? 120 : 200} fill='currentColor' />
                 <span>click here</span>
             </Center>
 
@@ -213,16 +239,15 @@ const Main = () => {
                 </motion.h2>
             </ABOUT>
 
-            {/* NEW LIKE BUTTON INSIDE BOTTOM BAR */}
-            <LIKE onClick={handleLikePress} $hasLikes={likes > 0}$click={click}>
+            {/* LIVE GLOBAL LIKE BUTTON */}
+            <LIKE onClick={handleLikePress} $hasLiked={hasLiked}$click={click}>
                 <motion.h2
                 initial={{ y:200, transition: { type:'spring', duration: 1.5, delay:1} }}
                 animate={{ y:0, transition: { type:'spring', duration: 1.5, delay:1} }}
-                whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.9}}
                 style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
                 >
-                    {likes > 0 ? '♥' : '♡'} {likes}
+                    {hasLiked ? '♥' : '♡'} {likes}
                 </motion.h2>
             </LIKE>
 
