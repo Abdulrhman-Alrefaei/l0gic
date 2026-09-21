@@ -61,7 +61,7 @@ const TabContainer = styled.div`
 
 const TabButton = styled.button`
   background: ${props => (props.$active ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.05)')};
-  color: #fff;
+  color: #000; /* CHANGED HERE: Changed from #fff to #000 (black) */
   border: 1px solid ${props => (props.$active ? '#fff' : 'rgba(255, 255, 255, 0.15)')};
   padding: 0.6rem 1.8rem;
   border-radius: 30px;
