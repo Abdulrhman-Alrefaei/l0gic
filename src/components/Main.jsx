@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import LogoComponent from '../subComponents/LogoComponent'
@@ -7,15 +7,12 @@ import PowerButton from '../subComponents/PowerButton'
 import SocialIcons from '../subComponents/SocialIcons'
 import { YinYang } from './AllSvgs'
 import Intro from './Intro'
-;
-
 
 const MainContainer = styled.div`
 background: ${props => props.theme.body};
 width: 100vw;
 height: 100vh;
 overflow:hidden;
-
 position: relative;
 
 h2,h3,h4,h5,h6{
@@ -36,6 +33,7 @@ right: calc(1rem + 2vw);
 text-decoration: none;
 z-index:1;
 `
+
 const BLOG = styled(NavLink)`
 color: ${props => props.theme.text};
 position: absolute;
@@ -45,9 +43,9 @@ transform: rotate(90deg) translate(-50%, -50%);
 text-decoration: none;
 z-index:1;
 `
+
 const WORK = styled(NavLink)`
 color: ${props => props.$click ? props.theme.body : props.theme.text};
-
 position: absolute;
 top: 50%;
 left: calc(1rem + 2vw);
@@ -62,9 +60,9 @@ bottom: 1rem;
 left: 0;
 right: 0;
 width: 100%;
-
 display: flex;
 justify-content: space-evenly;
+align-items: center;
 `
 
 const ABOUT = styled(NavLink)`
@@ -72,11 +70,24 @@ color: ${props => props.$click ? props.theme.body : props.theme.text};
 text-decoration: none;
 z-index:1;
 `
+
 const SKILLS = styled(NavLink)`
 color: ${props => props.theme.text};
 text-decoration: none;
 z-index:1;
 `
+
+// --- NEW LIKE BUTTON STYLES ---
+const LIKE = styled.button`
+background: none;
+border: none;
+/* Turns red if liked, otherwise adapts to the dark/light background based on $click */
+color: ${props => props.$hasLikes ? '#ff4b4b' : (props.$click ? props.theme.body : props.theme.text)};
+cursor: pointer;
+z-index:1;
+outline: none;
+`
+// ------------------------------
 
 const rotate = keyframes`
 from{
@@ -96,7 +107,6 @@ border: none;
 outline: none;
 background-color: transparent;
 cursor: pointer;
-
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -129,8 +139,21 @@ transition: height 0.5s ease, width 1s ease 0.5s;
 const Main = () => {
 
     const [click, setClick] = useState(false);
-
     const handleClick = () => setClick(!click);
+
+    // --- NEW LIKES STATE (Reads from LocalStorage) ---
+    const [likes, setLikes] = useState(() => {
+        const savedLikes = localStorage.getItem('my_portfolio_likes');
+        return savedLikes !== null ? parseInt(savedLikes, 10) : 0;
+    });
+
+    // Handle Like Button Press
+    const handleLikePress = () => {
+        const newLikes = likes + 1;
+        setLikes(newLikes);
+        localStorage.setItem('my_portfolio_likes', newLikes); // Saves it so it survives refreshes
+    };
+    // --------------------------------------------------
 
     return (
         <MainContainer>
@@ -147,87 +170,72 @@ const Main = () => {
 
             <Contact target="_blank" href="mailto:abdulrhmanalrefaei@gmail.com">
                 <motion.h2
-                initial={{
-                    y:-200,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
-                animate={{
-                    y:0,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
+                initial={{ y:-200, transition: { type:'spring', duration: 1.5, delay:1} }}
+                animate={{ y:0, transition: { type:'spring', duration: 1.5, delay:1} }}
                 whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.9}}
-                
                 >
                     Say hi..
                 </motion.h2>
             </Contact>
+
             <BLOG to="/blog">
                 <motion.h2
-                initial={{
-                    y:-200,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
-                animate={{
-                    y:0,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
+                initial={{ y:-200, transition: { type:'spring', duration: 1.5, delay:1} }}
+                animate={{ y:0, transition: { type:'spring', duration: 1.5, delay:1} }}
                 whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.9}}
                 >
                     Blog
                 </motion.h2>
             </BLOG>
+
             <WORK to="/work" $click={click}>
                 <motion.h2
-                initial={{
-                    y:-200,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
-                animate={{
-                    y:0,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
+                initial={{ y:-200, transition: { type:'spring', duration: 1.5, delay:1} }}
+                animate={{ y:0, transition: { type:'spring', duration: 1.5, delay:1} }}
                  whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.9}}
                 >
                     Work
                 </motion.h2>
             </WORK>
+
             <BottomBar>
             <ABOUT to="/about" $click={click}>
                 <motion.h2
-                initial={{
-                    y:200,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
-                animate={{
-                    y:0,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
+                initial={{ y:200, transition: { type:'spring', duration: 1.5, delay:1} }}
+                animate={{ y:0, transition: { type:'spring', duration: 1.5, delay:1} }}
                  whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.9}}
                 >
                     About.
                 </motion.h2>
             </ABOUT>
+
+            {/* NEW LIKE BUTTON INSIDE BOTTOM BAR */}
+            <LIKE onClick={handleLikePress} $hasLikes={likes > 0}$click={click}>
+                <motion.h2
+                initial={{ y:200, transition: { type:'spring', duration: 1.5, delay:1} }}
+                animate={{ y:0, transition: { type:'spring', duration: 1.5, delay:1} }}
+                whileHover={{scale: 1.1}}
+                whileTap={{scale: 0.9}}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+                >
+                    {likes > 0 ? '♥' : '♡'} {likes}
+                </motion.h2>
+            </LIKE>
+
             <SKILLS to="/skills">
                 <motion.h2
-                initial={{
-                    y:200,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
-                animate={{
-                    y:0,
-                    transition: { type:'spring', duration: 1.5, delay:1}
-                }}
+                initial={{ y:200, transition: { type:'spring', duration: 1.5, delay:1} }}
+                animate={{ y:0, transition: { type:'spring', duration: 1.5, delay:1} }}
                  whileHover={{scale: 1.1}}
                 whileTap={{scale: 0.9}}
                 >
                     My Skills.
                 </motion.h2>
             </SKILLS>
-
             </BottomBar>
 
             </Container>
