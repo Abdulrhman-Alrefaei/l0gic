@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; // <-- IMPORTED LINK FOR NAVIGATION
 
 // Photo Imports (.jpeg)
 import photo1 from '../assets/Images/photo1.jpeg';
@@ -28,7 +29,29 @@ const MainContainer = styled.div`
   color: ${props => props.theme.text || '#f8fafc'};
   padding: 4rem 2rem;
   box-sizing: border-box;
+  position: relative; /* <-- ADDED FOR ABSOLUTE POSITIONING OF BACK BUTTON */
 `;
+
+// --- NEW BACK BUTTON STYLES ---
+const BackButton = styled(Link)`
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  text-decoration: none;
+  color: ${props => props.theme.text || '#f8fafc'};
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    transform: translateX(-5px); /* Moves slightly to the left on hover */
+    opacity: 0.7;
+  }
+`;
+// ------------------------------
 
 const ContentWrapper = styled.div`
   max-width: 1200px;
@@ -61,7 +84,7 @@ const TabContainer = styled.div`
 
 const TabButton = styled.button`
   background: ${props => (props.$active ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.05)')};
-  color: #000; /* CHANGED HERE: Changed from #fff to #000 (black) */
+  color: #000; /* Words are black as requested */
   border: 1px solid ${props => (props.$active ? '#fff' : 'rgba(255, 255, 255, 0.15)')};
   padding: 0.6rem 1.8rem;
   border-radius: 30px;
@@ -204,6 +227,11 @@ const Gallery = () => {
 
   return (
     <MainContainer>
+      {/* NEW BACK BUTTON RENDERED HERE */}
+      <BackButton to="/">
+        ← Back to Home
+      </BackButton>
+
       <ContentWrapper>
         <HeaderTitle>Gallery & Cinema</HeaderTitle>
         <HeaderSubtitle>A collection of my photography and favorite movies</HeaderSubtitle>
